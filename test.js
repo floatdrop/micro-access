@@ -2,11 +2,11 @@ import {serial as test} from 'ava';
 import got from 'got';
 import micro from 'micro';
 import testListen from 'test-listen';
-import access from '.';
+import m from '.';
 
 const macro = async (t, {header, opts}, expected) => {
 	const url = await testListen(micro((req, res) => {
-		access(req, res, opts);
+		m(req, res, opts);
 		return {};
 	}));
 	t.is((await got(url, {json: true})).headers[header], expected);
@@ -16,7 +16,7 @@ const envMacro = async (t, {env, header}, expected) => {
 	const ENV = process.env[env.key];
 	process.env[env.key] = env.value;
 	const url = await testListen(micro((req, res) => {
-		access(req, res);
+		m(req, res);
 		return {};
 	}));
 	t.is((await got(url, {json: true})).headers[header], expected);
