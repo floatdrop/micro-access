@@ -16,7 +16,8 @@ $ npm install micro-access
 const {json, send} = require('micro');
 const microAccess = require('micro-access');
 
-module.exports = microAccess()(async (req, res) => {
+module.exports = async (req, res) => {
+	microAccess(req, res);
 	const body = await json(req);
 	send(res, 200, body);
 });
@@ -25,7 +26,7 @@ module.exports = microAccess()(async (req, res) => {
 
 ## API
 
-### microAccess([options])(handler)
+### microAccess(req, res, [options])
 
 #### options
 

@@ -6,8 +6,7 @@ import m from '.';
 
 const macro = async (t, {header, opts}, expected) => {
 	const access = m(opts);
-	const handler = () => ({});
-	const url = await testListen(micro(access(handler)));
+	const url = await testListen(micro(access));
 	t.is((await got(url, {json: true})).headers[header], expected);
 };
 
