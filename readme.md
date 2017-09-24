@@ -28,17 +28,23 @@ module.exports = async (req, res) => {
 
 ### microAccess(req, res, [options])
 
+#### req
+
+Type: `http.IncomingMessage`
+
+Incoming HTTP request.
+
+#### res
+
+Type: `http.ServerResponse`
+
+Response object.
+
 #### options
 
 Type: `Object`
 
 Same as [`control-access`](https://github.com/kevva/control-access#options).
-
-#### handler
-
-Type: `Function`
-
-The request handler to wrap.
 
 
 ## Related
